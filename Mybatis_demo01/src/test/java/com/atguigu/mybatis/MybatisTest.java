@@ -27,6 +27,7 @@ public class MybatisTest {
         // 获取工厂类
         SqlSessionFactory sqlSessionFactory = builder.build(is);
 
+        // sqlSession默认不提交事务， 设置参数 true 代表自动提交事务
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
