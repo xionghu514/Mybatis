@@ -7,5 +7,6 @@ package com.atguigu.mybatis.mapper;
  * @Email: 1796235969@qq.com
  */
 public interface UserMapper {
-
+    // 新增用用户数据
+    int saveUser();
 }
