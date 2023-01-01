@@ -1,5 +1,7 @@
 package com.atguigu.mybatis.mapper;
 
+import com.atguigu.mybatis.pojo.User;
+
 /**
  * @Description:
  * @Author: xionghu514
@@ -15,4 +17,9 @@ public interface UserMapper {
 
     // 删除用户
     void deleteUser();
+
+    // 查询一条数据
+    User queryUserById();
+
+
 }

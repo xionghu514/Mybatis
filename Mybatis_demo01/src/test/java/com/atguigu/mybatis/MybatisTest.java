@@ -1,6 +1,7 @@
 package com.atguigu.mybatis;
 
 import com.atguigu.mybatis.mapper.UserMapper;
+import com.atguigu.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -61,5 +62,19 @@ public class MybatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         userMapper.deleteUser();
+    }
+
+    @Test
+    public void QueryUserById() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+
+        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = userMapper.queryUserById();
+        System.out.println(user);
     }
 }
