@@ -30,8 +30,19 @@ public class ParameterMapperTest {
         User user = mapper.queryUserByName("张三");
         // 在mapper接口只有一个参数时，#{}和${}可以以任意字符串接收参数，但是${}要注意单引号问题
         System.out.println(user);
+    }
 
-
+    /**
+     * 在mapper接口传入多个参数时，此时mybatis是将这些参数放入map中，以两种方式进行存储，
+     * 1.arg0 arg1
+     * 2.param1 param2
+     */
+    @Test
+    public void checkUser() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        User user = mapper.checkUser("张三", "123456");
+        System.out.println(user);
     }
 
 }

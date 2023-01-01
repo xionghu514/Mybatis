@@ -14,4 +14,6 @@ public interface ParameterMapper {
     List<User> queryAllUser();
 
     User queryUserByName(String username);
+
+    User checkUser(String username, String password);
 }
