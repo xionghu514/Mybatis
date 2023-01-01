@@ -7,12 +7,18 @@
     <select id="queryAllUser" resultType="com.atguigu.mybatis.pojo.User">
         select * from t_user
     </select>
+
     <select id="queryUserByName" resultType="com.atguigu.mybatis.pojo.User">
         <!-- select * from t_user where username = '${username}' -->
         select * from t_user where username = ${username}
     </select>
+
     <select id="checkUser" resultType="com.atguigu.mybatis.pojo.User">
         <!-- select * from t_user where username = #{param1} and password = #{param2} -->
         select * from t_user where username = #{arg0} and password = #{arg1}
+    </select>
+
+    <select id="checkLoginByMap" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
     </select>
 </mapper>

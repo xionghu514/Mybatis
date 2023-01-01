@@ -3,6 +3,7 @@ package com.atguigu.mybatis.mapper;
 import com.atguigu.mybatis.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description:
@@ -16,4 +17,6 @@ public interface ParameterMapper {
     User queryUserByName(String username);
 
     User checkUser(String username, String password);
+
+    User checkLoginByMap(Map<String, Object> map);
 }
