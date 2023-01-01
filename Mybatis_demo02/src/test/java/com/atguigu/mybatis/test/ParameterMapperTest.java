@@ -38,8 +38,10 @@ public class ParameterMapperTest {
      * 在mapper接口传入多个参数时，此时mybatis是将这些参数放入map中，以两种方式进行存储，
      * 1.arg0 arg1
      * 2.param1 param2
-     * 因此只需要以#{} ${} 访问值即可
+     * 因此只需要#{} ${} 通过键访问值即可 ${}要加单引号
      * 3. mapper接口有多个参数时可以将这些参数手动放入map中
+     * 4. mapper接口是实体类类型的参数
+     * 因此只需要#{} ${} 通过属性的方式访问值即可 ${}要加单引号
      */
     @Test
     public void checkUser() {
@@ -58,6 +60,14 @@ public class ParameterMapperTest {
         map.put("password", "123456");
         User user = mapper.checkLoginByMap(map);
         System.out.println(user);
+    }
+
+    @Test
+    public void testInsertUser() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        mapper.insertUser(new User(null, "李四", "12345", 13, "男", "321@qq.com"));
+
     }
 
 }

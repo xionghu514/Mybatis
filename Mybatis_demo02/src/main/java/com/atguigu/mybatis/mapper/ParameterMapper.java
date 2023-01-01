@@ -19,4 +19,6 @@ public interface ParameterMapper {
     User checkUser(String username, String password);
 
     User checkLoginByMap(Map<String, Object> map);
+
+    void insertUser(User user);
 }
