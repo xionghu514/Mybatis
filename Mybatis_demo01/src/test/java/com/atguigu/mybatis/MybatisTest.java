@@ -27,12 +27,12 @@ public class MybatisTest {
         // 获取工厂类
         SqlSessionFactory sqlSessionFactory = builder.build(is);
 
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
         int i = userMapper.saveUser();
-        sqlSession.commit();
+//        sqlSession.commit();
 
         System.out.println("result = " + i);
 
