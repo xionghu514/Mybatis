@@ -18,4 +18,8 @@
     <select id="queryUserById" resultType="com.atguigu.mybatis.pojo.User">
         select * from t_user where id = 10
     </select>
+
+    <select id="queryUsers" resultType="com.atguigu.mybatis.pojo.User">
+        select * from t_user
+    </select>
 </mapper>

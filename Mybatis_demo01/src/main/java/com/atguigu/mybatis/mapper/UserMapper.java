@@ -2,6 +2,8 @@ package com.atguigu.mybatis.mapper;
 
 import com.atguigu.mybatis.pojo.User;
 
+import java.util.List;
+
 /**
  * @Description:
  * @Author: xionghu514
@@ -21,5 +23,6 @@ public interface UserMapper {
     // 查询一条数据
     User queryUserById();
 
-
+    // 查询多条数据
+    List<User> queryUsers();
 }

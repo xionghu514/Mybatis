@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @Description:
@@ -65,7 +66,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void QueryUserById() throws IOException {
+    public void queryUserById() throws IOException {
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
@@ -76,5 +77,19 @@ public class MybatisTest {
 
         User user = userMapper.queryUserById();
         System.out.println(user);
+    }
+
+    @Test
+    public void queryUsers() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+
+        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> users = userMapper.queryUsers();
+        System.out.println(users);
     }
 }
