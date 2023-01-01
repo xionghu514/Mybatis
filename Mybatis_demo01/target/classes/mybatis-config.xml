@@ -3,8 +3,41 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!--  映入properties文件  -->
+    <properties resource="jdbc.properties"/>
+
+    <!-- 设置类型别名 -->
+    <typeAliases>
+        <!--  alias: 不设置就用类名做别名  -->
+<!--        <typeAlias type="com.atguigu.mybatis.pojo.User"/>-->
+        <!--    以包作为单位，类名做别名    -->
+        <package name="com.atguigu.mybatis.pojo"/>
+    </typeAliases>
+    <!--
+        environments: 配置连接多个数据库的环境
+        default: 默认使用的环境的id
+    -->
     <environments default="development">
+        <!--
+            environment: 配置某个具体的环境
+            id: 表示连接数据库的配置的唯一标识，不能重复
+        -->
         <environment id="development">
+        <!--
+            属性:
+            type:
+        -->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
@@ -15,6 +48,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mappers/UserMapper.xml"/>
+<!--        <mapper resource="mappers/UserMapper.xml"/>-->
+    <!--    以包作为单位进行映射    -->
+        <package name="com.atguigu.mybatis.mapper"/>
     </mappers>
 </configuration>

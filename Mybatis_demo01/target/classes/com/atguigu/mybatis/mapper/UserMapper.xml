@@ -15,11 +15,11 @@
         delete from t_user where id != 10
     </delete>
 
-    <select id="queryUserById" resultType="com.atguigu.mybatis.pojo.User">
+    <select id="queryUserById" resultType="user">
         select * from t_user where id = 10
     </select>
 
-    <select id="queryUsers" resultType="com.atguigu.mybatis.pojo.User">
+    <select id="queryUsers" resultType="User">
         select * from t_user
     </select>
 </mapper>
