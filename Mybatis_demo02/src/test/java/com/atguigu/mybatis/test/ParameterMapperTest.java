@@ -42,6 +42,9 @@ public class ParameterMapperTest {
      * 3. mapper接口有多个参数时可以将这些参数手动放入map中
      * 4. mapper接口是实体类类型的参数
      * 因此只需要#{} ${} 通过属性的方式访问值即可 ${}要加单引号
+     *  5. 使用@param注解命名参数
+     *   <1. 以@param注解的值为键，以参数为值
+     *   <2. 以param1，param2...为键，参数为值
      */
     @Test
     public void checkUser() {
@@ -68,6 +71,14 @@ public class ParameterMapperTest {
         ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
         mapper.insertUser(new User(null, "李四", "12345", 13, "男", "321@qq.com"));
 
+    }
+
+    @Test
+    public void queryUserByParam() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        User user = mapper.queryUserByParam("李四", "12345");
+        System.out.println(user);
     }
 
 }
