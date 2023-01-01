@@ -10,7 +10,7 @@
     <!-- 设置类型别名 -->
     <typeAliases>
         <!--  alias: 不设置就用类名做别名  -->
-<!--        <typeAlias type="com.atguigu.mybatis.pojo.User"/>-->
+<!--        <typeAlias type="com.atguigu.User"/>-->
         <!--    以包作为单位，类名做别名    -->
         <package name="com.atguigu.mybatis.pojo"/>
     </typeAliases>
