@@ -38,4 +38,28 @@ public class MybatisTest {
         System.out.println("result = " + i);
 
     }
+
+    @Test
+    public void testUpdate() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+
+        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        userMapper.updateUser();
+    }
+
+    @Test
+    public void testDelete() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+
+        SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        userMapper.deleteUser();
+    }
 }

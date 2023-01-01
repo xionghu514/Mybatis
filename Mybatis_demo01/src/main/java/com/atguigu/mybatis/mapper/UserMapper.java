@@ -9,4 +9,10 @@ package com.atguigu.mybatis.mapper;
 public interface UserMapper {
     // 新增用用户数据
     int saveUser();
+
+    // 修改用户
+    void updateUser();
+
+    // 删除用户
+    void deleteUser();
 }

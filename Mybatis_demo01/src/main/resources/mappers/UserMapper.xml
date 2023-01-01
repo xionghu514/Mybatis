@@ -6,4 +6,12 @@
     <insert id="saveUser" >
         insert into t_user values(null, 'zhangsan', '123456', 15, '男', '123456@qq.com')
     </insert>
+
+    <update id="updateUser">
+        update t_user set username = '张三', sex = '女' where id = 4
+    </update>
+
+    <delete id="deleteUser">
+        delete from t_user where id != 10
+    </delete>
 </mapper>
