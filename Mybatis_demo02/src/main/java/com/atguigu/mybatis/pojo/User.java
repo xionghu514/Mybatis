@@ -3,7 +3,7 @@ package com.atguigu.mybatis.pojo;
 /**
  * @Description:
  * @Author: xionghu514
- * @Date: 2022/12/31 16:18
+ * @Date: 2023/1/1 19:46
  * @Email: 1796235969@qq.com
  */
 public class User {
