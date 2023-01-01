@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface ParameterMapper {
     List<User> queryAllUser();
+
+    User queryUserByName(String username);
 }

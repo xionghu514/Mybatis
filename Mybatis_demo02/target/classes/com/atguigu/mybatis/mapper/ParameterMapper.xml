@@ -7,4 +7,8 @@
     <select id="queryAllUser" resultType="com.atguigu.mybatis.pojo.User">
         select * from t_user
     </select>
+    <select id="queryUserByName" resultType="com.atguigu.mybatis.pojo.User">
+--         select * from t_user where username = '${username}'
+        select * from t_user where username = ${username}
+    </select>
 </mapper>
