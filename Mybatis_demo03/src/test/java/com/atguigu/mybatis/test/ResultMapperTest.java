@@ -1,6 +1,8 @@
 package com.atguigu.mybatis.test;
 
+import com.atguigu.mybatis.mapper.DeptMapper;
 import com.atguigu.mybatis.mapper.EmpMapper;
+import com.atguigu.mybatis.pojo.Dept;
 import com.atguigu.mybatis.pojo.Emp;
 import com.atguigu.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -33,7 +35,19 @@ public class ResultMapperTest {
      *  2.association
      *  3.分步查询
      *      好处: 可以进行延迟加载
+     *
+     * 处理一对多映射关系
+     *  1.collection
      */
+
+    @Test
+    public void testQueryDeptAnEmp() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.queryDeptAndEmp(1);
+        System.out.println(dept);
+    }
+
     @Test
     public void testQueryEmp() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();

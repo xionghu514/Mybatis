@@ -7,4 +7,26 @@
         select * from t_dept where did = #{did}
     </select>
 
+    <select id="queryDeptAndEmp" resultMap="deptAndEmpMap">
+        select * from t_dept left join t_emp on t_dept.did = t_emp.did where t_dept.did = #{did}
+    </select>
+
+    <resultMap id="deptAndEmpMap" type="Dept">
+        <id column="did" property="did"></id>
+
+        <!--
+            collection: 处理一对多映射关系
+            ofType: 该属性所对应的集合的泛型
+         -->
+        <collection property="emps" ofType="Emp">
+            <id column="eid" property="eid"></id>
+            <result column="emp_name" property="empName"/>
+            <result column="age" property="age"/>
+            <result column="sex" property="sex"/>
+            <result column="email" property="email"/>
+        </collection>
+    </resultMap>
+
+
+
 </mapper>

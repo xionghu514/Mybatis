@@ -11,4 +11,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface DeptMapper {
     Dept queryEmpAndDeptByStepTwo(@Param("did") Integer did);
+
+    Dept queryDeptAndEmp(@Param("did") Integer did);
 }
