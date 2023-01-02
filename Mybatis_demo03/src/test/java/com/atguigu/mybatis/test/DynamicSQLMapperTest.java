@@ -21,11 +21,16 @@ public class DynamicSQLMapperTest {
      *          where标签有内容时，会自动生成where关键字，并且将内容前的 and 或者 or 删掉
      *          如过where标签没有内容，where将不生效
      *          注意：where只能删除内容前的and 或者 or，内容后的 and 或者 or无法删除
+     *     3. trim
+     *          若标签中有内容：
+     *              prefix|suffix: 在trim标签中的内容 添加前缀或者后缀
+     *              prefixOverrides|suffixOverrides：将trim标签中的内容的前前面或者后面去掉指定内容
+     *
      */
     @Test
     public void testQueryEmpByCondition() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
-        System.out.println(mapper.queryEmpByCondition(new Emp(null, null, null, "男", null, null)));
+        System.out.println(mapper.queryEmpByCondition(new Emp(null, "张三", null, "男", null, null)));
     }
 }

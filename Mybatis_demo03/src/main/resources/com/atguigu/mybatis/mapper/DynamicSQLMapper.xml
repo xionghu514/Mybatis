@@ -6,7 +6,7 @@
 
     <select id="queryEmpByCondition" resultType="com.atguigu.mybatis.pojo.Emp">
         select * from t_emp
-        <where>
+        <trim prefix="where" prefixOverrides="and|or">
             <if test="empName != null and empName != ''">
                 emp_name = #{empName}
             </if>
@@ -19,7 +19,7 @@
             <if test="email != null and email != ''">
                 and email = #{email}
             </if>
-        </where>
+        </trim>
     </select>
 
     <select id="queryEmpByConditionOne" resultType="com.atguigu.mybatis.pojo.Emp">
