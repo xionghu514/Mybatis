@@ -36,7 +36,17 @@
         <result column="age" property="age"></result>
         <result column="sex" property="sex"></result>
         <result column="email" property="email"></result>
-        <result column="did" property="dept.did"></result>
-        <result column="dept_name" property="dept.deptName"></result>
+<!--        <result column="did" property="dept.did"></result>-->
+<!--        <result column="dept_name" property="dept.deptName"></result>-->
+
+        <!--
+            association: 处理多对一映射关系
+            property: 需要处理的多对一的属性名
+            javaType: 该属性的类型
+        -->
+        <association property="dept" javaType="Dept">
+            <id column="did" property="did"></id>
+            <result column="dept_name" property="deptName"></result>
+        </association>
     </resultMap>
 </mapper>

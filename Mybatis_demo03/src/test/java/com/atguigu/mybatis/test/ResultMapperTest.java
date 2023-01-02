@@ -30,6 +30,7 @@ public class ResultMapperTest {
      *
      * 处理多对一映射关系
      *  1.使用级联属性赋值
+     *  2.association
      */
     @Test
     public void testQueryEmp() {
