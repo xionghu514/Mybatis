@@ -24,8 +24,9 @@ public class SelectMapperTest {
      *   <2. 可以通过 map 来接收
      *      map结果：{password=123456, sex=男, id=10, age=15, email=123456@qq.com, username=张三}
      *  2. 若查询结果有多条数据
-     *   <1. 可以通过 实体类对象
-     *   <2. 可以通过 map 来接收
+     *   <1. 可以通过 list 来接收
+     *   <2. 可以通过 map 类型的 list 来接收
+     *   <3. 可以在mapper接口上添加 @MapKey 注解，以每条数据转换的map集合作为值，以某个字段作为键
      *   但不可以同过实体类来接收，否则会报错: TooManyResultsException
      *
      *  mybatis设置了默认的类型别名
@@ -34,6 +35,13 @@ public class SelectMapperTest {
      *      int -> _int _integer
      *      Map -> map
      */
+
+    @Test
+    public void testQueryAllUserToMap() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.queryAllUserToMap());
+    }
 
     @Test
     public void testQueryUserByIdToMap() {
