@@ -16,6 +16,13 @@ import java.util.List;
  */
 public class SQLMapperTest {
     @Test
+    public void testDeleteMore() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        System.out.println(mapper.deleteMore("1,3,11"));
+    }
+
+    @Test
     public void testQueryUserByLike() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);

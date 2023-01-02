@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface SQLMapper {
     List<User> queryUserByLike(@Param("username") String username);
+
+    int deleteMore(@Param("ids") String ids);
 }
