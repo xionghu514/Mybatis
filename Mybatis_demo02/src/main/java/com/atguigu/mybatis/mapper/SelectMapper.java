@@ -4,6 +4,7 @@ import com.atguigu.mybatis.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description:
@@ -12,6 +13,10 @@ import java.util.List;
  * @Email: 1796235969@qq.com
  */
 public interface SelectMapper {
+    Map<String, Object> queryUserByIdToMap(@Param("id") Integer id);
+
+    int getCount();
+
     User queryUserById(@Param("id") Integer id);
 
     List<User> queryAllUser();

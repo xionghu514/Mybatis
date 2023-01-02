@@ -18,9 +18,36 @@ public class SelectMapperTest {
 
     /**
      * mybatis的各种查询功能
-     *  1. 若查询结果只有一条数据，可以通过实体类对象或者集合来接收
-     *  2. 若查询结果有多条数据，可以通过list集合来接收，但不可以同过实体类来接收，否则会报错: TooManyResultsException
+     *  1. 若查询结果只有一条数据，
+     *   <1. 可以通过 实体类对象 来接收
+     *   <2. 可以通过 list 来接收
+     *   <2. 可以通过 map 来接收
+     *      map结果：{password=123456, sex=男, id=10, age=15, email=123456@qq.com, username=张三}
+     *  2. 若查询结果有多条数据
+     *   <1. 可以通过 实体类对象
+     *   <2. 可以通过 map 来接收
+     *   但不可以同过实体类来接收，否则会报错: TooManyResultsException
+     *
+     *  mybatis设置了默认的类型别名
+     *  例如:
+     *      java.lang.Integer -> Integer int
+     *      int -> _int _integer
+     *      Map -> map
      */
+
+    @Test
+    public void testQueryUserByIdToMap() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.queryUserByIdToMap(10));
+    }
+
+    @Test
+    public void testGetCount() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.getCount());
+    }
 
     @Test
     public void testQueryUserById() {
