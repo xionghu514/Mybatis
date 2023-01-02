@@ -4,7 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.mybatis.mapper.EmpMapper">
 
-    <select id="queryEmp" resultType="com.atguigu.mybatis.pojo.Emp">
+    <!--
+        id: 唯一标识
+        type: 返回值类型
+        子标签:
+            id: 设置主键的映射关系
+            result: 普通字段的映射关系
+            column: sql语句查询出来的字段名
+            property: 属性名
+      -->
+    <resultMap id="resultEmpMap" type="Emp">
+        <id column="eid" property="eid"></id>
+        <result column="emp_name" property="empName"/>
+        <result column="age" property="age"></result>
+        <result column="sex" property="sex"></result>
+        <result column="did" property="did"></result>
+    </resultMap>
+
+    <select id="queryEmp" resultMap="resultEmpMap">
         <!--    select eid, emp_name empName, age, sex, email, did from t_emp;-->
         select * from t_emp;
     </select>

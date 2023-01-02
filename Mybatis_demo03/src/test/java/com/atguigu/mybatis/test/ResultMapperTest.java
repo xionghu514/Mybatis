@@ -18,6 +18,17 @@ public class ResultMapperTest {
     /**
      * 解决字段名和属性名不一致的方法:
      *  1.为字段起别名，保持和属性名一样
+     *  2.设置全局配置(mapUnderscoreToCamelCase)，将 _ 自动映射为驼峰
+     *  3.通过resultMap 设置自定义的映射关系：
+     *      <resultMap id="resultEmpMap" type="Emp">
+     *         <id column="eid" property="eid"></id>
+     *         <result column="emp_name" property="empName"/>
+     *         <result column="age" property="age"></result>
+     *         <result column="sex" property="sex"></result>
+     *         <result column="did" property="did"></result>
+     *     </resultMap>
+     *
+     *
      */
     @Test
     public void testQueryEmp() {
