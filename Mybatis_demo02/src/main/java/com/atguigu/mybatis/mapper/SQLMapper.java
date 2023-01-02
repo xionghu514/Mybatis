@@ -12,6 +12,8 @@ import java.util.List;
  * @Email: 1796235969@qq.com
  */
 public interface SQLMapper {
+    void insertUser(User user);
+
     List<User> queryUserByLike(@Param("username") String username);
 
     int deleteMore(@Param("ids") String ids);

@@ -16,6 +16,16 @@ import java.util.List;
  */
 public class SQLMapperTest {
     @Test
+    public void testInsertUser() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        User user = new User(null, "王五", "123321", 23, "男", "321@qq.com");
+        System.out.println(user);
+        mapper.insertUser(user);
+        System.out.println(user);
+    }
+
+    @Test
     public void testQueryUserByTableName() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
