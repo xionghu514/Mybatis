@@ -27,6 +27,15 @@
         </collection>
     </resultMap>
 
+    <select id="queryDeptAndEmpByStepOne" resultMap="deptAndEmpByStepMap">
+        select * from t_dept where did = #{did}
+    </select>
 
+    <resultMap id="deptAndEmpByStepMap" type="Dept">
+        <id column="did" property="did"></id>
 
+        <collection property="emps"
+                    select="com.atguigu.mybatis.mapper.EmpMapper.queryDeptAndEmpByStepTwo"
+                    column="did"/>
+    </resultMap>
 </mapper>

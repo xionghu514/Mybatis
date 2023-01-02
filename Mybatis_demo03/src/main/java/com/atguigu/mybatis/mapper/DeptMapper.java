@@ -13,4 +13,6 @@ public interface DeptMapper {
     Dept queryEmpAndDeptByStepTwo(@Param("did") Integer did);
 
     Dept queryDeptAndEmp(@Param("did") Integer did);
+
+    Dept queryDeptAndEmpByStepOne(@Param("did") Integer did);
 }

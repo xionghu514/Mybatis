@@ -38,7 +38,16 @@ public class ResultMapperTest {
      *
      * 处理一对多映射关系
      *  1.collection
+     *  2.分步查询
      */
+
+    @Test
+    public void testQueryDeptAndEmpByStep() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.queryDeptAndEmpByStepOne(1);
+        System.out.println(dept.getDeptName());
+    }
 
     @Test
     public void testQueryDeptAnEmp() {

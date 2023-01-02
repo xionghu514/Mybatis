@@ -67,4 +67,8 @@
     <select id="queryEmpAndDeptByStepOne" resultMap="empAndDeptResultMap">
         select * from t_emp where eid = #{eid}
     </select>
+
+    <select id="queryDeptAndEmpByStepTwo" resultType="emp">
+        select * from t_emp where did = #{did}
+    </select>
 </mapper>
