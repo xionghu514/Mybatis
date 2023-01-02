@@ -5,6 +5,24 @@
 <mapper namespace="com.atguigu.mybatis.mapper.DynamicSQLMapper">
 
     <select id="queryEmpByCondition" resultType="com.atguigu.mybatis.pojo.Emp">
+        select * from t_emp
+        <where>
+            <if test="empName != null and empName != ''">
+                emp_name = #{empName}
+            </if>
+            <if test="age != null and age != ''">
+                and age = #{age}
+            </if>
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryEmpByConditionOne" resultType="com.atguigu.mybatis.pojo.Emp">
         select * from t_emp where 1=1
         <if test="empName != null and empName != ''">
             and emp_name = #{empName}
