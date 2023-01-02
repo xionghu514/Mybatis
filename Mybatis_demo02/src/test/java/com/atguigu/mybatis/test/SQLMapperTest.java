@@ -16,6 +16,13 @@ import java.util.List;
  */
 public class SQLMapperTest {
     @Test
+    public void testQueryUserByTableName() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        System.out.println(mapper.queryUserByTableName("t_user"));
+    }
+
+    @Test
     public void testDeleteMore() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
