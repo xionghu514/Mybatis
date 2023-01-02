@@ -51,11 +51,16 @@
 
         <!--
             select: 设置分步查询sql的唯一标识，全类名 + 方法名
+
+            fetchType: 可以指定是延迟加载还是立即加载
+            fetchType = "eager|lazy  eager: 表示立即加载  lazy: 表示延迟加载
          -->
         <association
                 property="dept"
                 select="com.atguigu.mybatis.mapper.DeptMapper.queryEmpAndDeptByStepTwo"
-                column="did">
+                column="did"
+                fetchType="lazy"
+        >
         </association>
     </resultMap>
 

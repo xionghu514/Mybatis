@@ -32,6 +32,7 @@ public class ResultMapperTest {
      *  1.使用级联属性赋值
      *  2.association
      *  3.分步查询
+     *      好处: 可以进行延迟加载
      */
     @Test
     public void testQueryEmp() {
@@ -54,6 +55,6 @@ public class ResultMapperTest {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         Emp emp = mapper.queryEmpAndDeptByStepOne(2);
-        System.out.println(emp);
+        System.out.println(emp.getEmpName());
     }
 }
