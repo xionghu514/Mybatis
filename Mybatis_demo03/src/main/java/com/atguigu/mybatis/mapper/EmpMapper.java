@@ -15,4 +15,6 @@ public interface EmpMapper {
     List<Emp> queryEmp();
 
     Emp queryEmpByDept(@Param("eid")Integer eid);
+
+    Emp queryEmpAndDeptByStepOne(@Param("eid") Integer eid);
 }

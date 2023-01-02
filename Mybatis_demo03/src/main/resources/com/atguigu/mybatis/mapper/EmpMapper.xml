@@ -44,9 +44,22 @@
             property: 需要处理的多对一的属性名
             javaType: 该属性的类型
         -->
-        <association property="dept" javaType="Dept">
-            <id column="did" property="did"></id>
-            <result column="dept_name" property="deptName"></result>
+<!--        <association property="dept" javaType="Dept">-->
+<!--            <id column="did" property="did"></id>-->
+<!--            <result column="dept_name" property="deptName"></result>-->
+<!--        </association>-->
+
+        <!--
+            select: 设置分步查询sql的唯一标识，全类名 + 方法名
+         -->
+        <association
+                property="dept"
+                select="com.atguigu.mybatis.mapper.DeptMapper.queryEmpAndDeptByStepTwo"
+                column="did">
         </association>
     </resultMap>
+
+    <select id="queryEmpAndDeptByStepOne" resultMap="empAndDeptResultMap">
+        select * from t_emp where eid = #{eid}
+    </select>
 </mapper>
