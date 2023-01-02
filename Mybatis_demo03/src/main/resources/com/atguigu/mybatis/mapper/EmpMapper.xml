@@ -18,11 +18,25 @@
         <result column="emp_name" property="empName"/>
         <result column="age" property="age"></result>
         <result column="sex" property="sex"></result>
-        <result column="did" property="did"></result>
+        <result column="email" property="email"></result>
     </resultMap>
 
     <select id="queryEmp" resultMap="resultEmpMap">
         <!--    select eid, emp_name empName, age, sex, email, did from t_emp;-->
         select * from t_emp;
     </select>
+    
+    <select id="queryEmpByDept" resultMap="empAndDeptResultMap" >
+        select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid}
+    </select>
+    
+    <resultMap id="empAndDeptResultMap" type="Emp">
+        <id column="eid" property="eid"></id>
+        <result column="emp_name" property="empName"></result>
+        <result column="age" property="age"></result>
+        <result column="sex" property="sex"></result>
+        <result column="email" property="email"></result>
+        <result column="did" property="dept.did"></result>
+        <result column="dept_name" property="dept.deptName"></result>
+    </resultMap>
 </mapper>
