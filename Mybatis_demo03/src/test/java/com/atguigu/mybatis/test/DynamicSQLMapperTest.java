@@ -25,6 +25,9 @@ public class DynamicSQLMapperTest {
      *          若标签中有内容：
      *              prefix|suffix: 在trim标签中的内容 添加前缀或者后缀
      *              prefixOverrides|suffixOverrides：将trim标签中的内容的前前面或者后面去掉指定内容
+     *          若标签中没有内容：trim也不会生效
+     *     4. choose when otherwise  相当于 if...else if...else
+     *          when最少有一个，otherwise最多只能有一个
      *
      */
     @Test

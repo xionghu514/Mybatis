@@ -6,6 +6,30 @@
 
     <select id="queryEmpByCondition" resultType="com.atguigu.mybatis.pojo.Emp">
         select * from t_emp
+        <where>
+            <choose>
+                <when test="empName != null and empName != ''">
+                    emp_name = #{empName}
+                </when>
+                <when test="age != null and age != ''">
+                    age = #{age}
+                </when>
+                <when test="sex != null and sex != ''">
+                    sex = #{sex}
+                </when>
+                <when test="email != null and email != ''">
+                    email = #{email}
+                </when>
+                <otherwise>
+                    did = 1
+                </otherwise>
+            </choose>
+        </where>
+
+    </select>
+
+    <select id="queryEmpByConditionTwo" resultType="com.atguigu.mybatis.pojo.Emp">
+        select * from t_emp
         <trim prefix="where" prefixOverrides="and|or">
             <if test="empName != null and empName != ''">
                 emp_name = #{empName}
