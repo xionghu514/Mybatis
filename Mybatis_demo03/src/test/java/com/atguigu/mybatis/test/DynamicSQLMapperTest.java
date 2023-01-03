@@ -37,7 +37,9 @@ public class DynamicSQLMapperTest {
      *          open：设置foreach标签中所有内容的开头
      *          close：设置foreach标签中所有内容的结尾
      *          separator：设置foreach中内容与内容的分割符
-     *
+     *     6. sql片段
+     *     设置sql片段：<sql id="empColumns">eid, emp_name, age, sex, email</sql>
+     *     引用sql片段：select <include refid="empColumns"></include> from t_emp
      */
 
     @Test

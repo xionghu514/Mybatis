@@ -24,8 +24,10 @@
         -->
     </delete>
 
+    <sql id="empColumns">eid, emp_name, age, sex, email</sql>
+
     <select id="queryEmpByCondition" resultType="com.atguigu.mybatis.pojo.Emp">
-        select * from t_emp
+        select <include refid="empColumns"></include> from t_emp
         <where>
             <choose>
                 <when test="empName != null and empName != ''">
