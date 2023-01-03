@@ -30,6 +30,14 @@ public class DynamicSQLMapperTest {
      *          when最少有一个，otherwise最多只能有一个
      *
      */
+
+    @Test
+    public void testDeleteMoreByArray() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        mapper.deleteMoreByArray(new Integer[] {7,8,9});
+    }
+
     @Test
     public void testQueryEmpByCondition() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();

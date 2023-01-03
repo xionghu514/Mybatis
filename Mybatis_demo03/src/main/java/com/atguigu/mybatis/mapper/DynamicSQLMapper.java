@@ -1,6 +1,7 @@
 package com.atguigu.mybatis.mapper;
 
 import com.atguigu.mybatis.pojo.Emp;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ import java.util.List;
  */
 public interface DynamicSQLMapper {
     List<Emp> queryEmpByCondition(Emp emp);
+
+    void deleteMoreByArray(@Param("eids") Integer[] eids);
 }
