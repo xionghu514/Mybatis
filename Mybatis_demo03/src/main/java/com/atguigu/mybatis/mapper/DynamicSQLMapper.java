@@ -15,4 +15,6 @@ public interface DynamicSQLMapper {
     List<Emp> queryEmpByCondition(Emp emp);
 
     void deleteMoreByArray(@Param("eids") Integer[] eids);
+
+    void insertMoreByarray(@Param("emps") List<Emp> emps);
 }

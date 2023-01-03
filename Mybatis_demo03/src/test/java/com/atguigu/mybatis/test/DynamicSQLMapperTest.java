@@ -6,6 +6,9 @@ import com.atguigu.mybatis.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Description:
  * @Author: xionghu514
@@ -28,8 +31,25 @@ public class DynamicSQLMapperTest {
      *          若标签中没有内容：trim也不会生效
      *     4. choose when otherwise  相当于 if...else if...else
      *          when最少有一个，otherwise最多只能有一个
+     *     5. foreach
+     *          collection：设置需要循环的集合或者数组
+     *          item：设置集合或者数组中的一个元素
+     *          open：设置foreach标签中所有内容的开头
+     *          close：设置foreach标签中所有内容的结尾
+     *          separator：设置foreach中内容与内容的分割符
      *
      */
+
+    @Test
+    public void testInsertMoreByarray() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        List<Emp> emps = new ArrayList<>();
+        emps.add(new Emp(null, "赵六", 12, "男", "123456@qq.com", null));
+        emps.add(new Emp(null, "塞俄", 18, "女", "1275@qq.com", null));
+        emps.add(new Emp(null, "老八", 28, "男", "8888@qq.com", null));
+        mapper.insertMoreByarray(emps);
+    }
 
     @Test
     public void testDeleteMoreByArray() {
